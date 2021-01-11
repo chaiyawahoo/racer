@@ -28,4 +28,8 @@ public class CharacterCamera : MonoBehaviour
         Vector3 newPosition = new Vector3(character.transform.position.x, 0, -10);
         transform.position = Vector3.Lerp(transform.position, newPosition, 0.1f / Time.deltaTime);
     }
+
+    private void OnDestroy() {
+        numCameras--;
+    }
 }

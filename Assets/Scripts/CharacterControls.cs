@@ -108,6 +108,12 @@ public class CharacterControls : NetworkBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Finish")) {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionStay(Collision collision) {
         grounded = false;
         foreach (ContactPoint cp in collision.contacts) {
@@ -131,5 +137,9 @@ public class CharacterControls : NetworkBehaviour
         } else {
             GetComponent<MeshRenderer>().material.color = Color.red;
         }
+    }
+
+    private void OnDestroy() {
+        numPlayers--;
     }
 }
